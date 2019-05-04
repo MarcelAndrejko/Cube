@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <style>
+		body {
+			color: #eeeeee;
+			background: black;
+			margin: 0;
+			padding: 0;
+		}
+	
+		.surface {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 20vmin;
+			height: 20vmin;
+			transform-origin: center center 0;;
+			transform-style: preserve-3d;                  
+			/*backface-visibility: visible;*/
+		}
+	
+		.surface.front {transform: translateZ(-10vmin); background: rgb(255,0,0);} 
+		.surface.back {transform: translateZ(10vmin);  background: rgb(0,255,0);} 
+		.surface.left {transform: translateX(-10vmin) rotateY(90deg); background: rgb(0,0,255);}
+		.surface.right {transform: translateX(10vmin) rotateY(90deg);  background: rgb(255,255,0);} 
+		.surface.top {transform: translateY(10vmin) rotateX(90deg); background: rgb(0,255,255);}
+		.surface.bottom {transform: translateY(-10vmin) rotateX(90deg); background: rgb(255,0,255);}  
+	  
+		@keyframes anim {
+			from {transform: perspective(80vmin) rotateY(0) rotateX(0);}
+			to {transform: perspective(80vmin) rotateY(360deg) rotateX(360deg);}
+		}
+	  
+		.cube {
+			position: absolute;
+			top: 50vh;
+			left: 50vw;
+			width: 20vmin;
+			height: 20vmin;
+			margin-top: -10vmin;
+			margin-left: -10vmin;
+			transform-origin: center center 0;
+			transform-style: preserve-3d;
+			animation: anim 5s linear infinite;
+		}
+    </style>
+
+    <title>Cube - CSS transform and animation demo</title>
+</head>
+<body>
+    <div class="cube">
+        <div class="surface left"></div>
+        <div class="surface right"></div>
+        <div class="surface back"></div>
+        <div class="surface front"></div>
+        <div class="surface top"></div>
+        <div class="surface bottom"></div>
+    </div>
+</body>
+</html>
